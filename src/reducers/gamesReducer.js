@@ -3,13 +3,14 @@
 const initState = {
     popular: [],
     newGames: [],
-    upComing: []
+    upComing: [],
+    searched: []
 }
 
 const gamesReducer = (state=initState, action) => {
     switch(action.type){
         case 'FETCH_GAMES':
-            return {...state}
+            return {...state, popular: action.payload.popular}
         default: 
             return {...state}
     }
@@ -20,12 +21,11 @@ const gamesReducer = (state=initState, action) => {
 // {
 //     return{
 //         type: 'FETCH_GAMES',
-//      payload: userData --- This is used to send data f.e: password, mail ,etc. and in the reducer is called: return {state, action.payload} 
+//     //  payload: userData // This is used to send data f.e: password, mail ,etc. and in the reducer is called: return {state, action.payload} 
 //     }
 // }
 
-// fetchGames({user:'name'});
-// //{type: "FETCH_GAMES"}
+
 
 
 export default gamesReducer
