@@ -43,3 +43,6 @@ export const gameDetailsUrl =  (game_id)=>`${base_url}games/${game_id}`
 //game screenshots
 export const gameScreenshotUrl =  (game_id)=>`${base_url}games/${game_id}/screenshots` 
 // getCurrentMonth(); //to run this you need to use node js  in terminal
+
+//searched game
+export const searchGameUrl = (game_name) => `${base_url}games?search=${game_name}&page_size=5`
