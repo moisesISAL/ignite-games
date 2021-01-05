@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import {useHistory} from 'react-router-dom';
 import {smallImage} from '../util'
 
-const GameDetail = () => {
+const GameDetail = ({pathId}) => {
   const history = useHistory();
 const exitDetailHandler = (e) => {
   const element = e.target;
@@ -20,10 +20,10 @@ const exitDetailHandler = (e) => {
     <>
     {!isLoading && (
     <CardShadow className='shadow' onClick={exitDetailHandler}>
-      <Detail>
+      <Detail layoutId={pathId}>
         <Stats>
           <div className="rating">
-            <h3>{game.name}</h3>
+            <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
             <p>Rating: {game.rating}</p>
           </div>
           <Info>
@@ -36,14 +36,14 @@ const exitDetailHandler = (e) => {
           </Info>
         </Stats>
         <Media>
-          <img src={smallImage(game.background_image, 1280)} alt="name" />
+          <motion.img layoutId={`image ${pathId}`} src={smallImage(game.background_image, 1280)} alt="name" />
         </Media>
         <Description>
           <p>{game.description_raw}</p>
         </Description>
         <div className="gallery">
           {screen.results.map((screen) => (
-            <img key={screen.id} src={smallImage(screen.image, 1280)} alt="name" />
+            <img key={screen.id} src={smallImage(screen.image, 640)} alt="name" />
           ))}
         </div>
       </Detail>
